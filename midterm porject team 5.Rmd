@@ -1,0 +1,51 @@
+---
+title: "midterm project team 5"
+output: html_document
+date: "2022-10-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+install some packages or libraries
+```{r}
+
+library(ggplot2)
+library(ezids)
+library(dplyr)
+library(readr)
+```
+
+## read data
+Read the data .CSV files of adults arrest in DC area from 2016-2021
+```{r }
+
+df_2016<-data.frame(read.csv("Arrests 2016 Public.csv"))[,1:14]
+df_2017<-data.frame(read.csv("Arrests 2017 Public.csv"))[,1:14]
+df_2018<-data.frame(read.csv("Arrests by Year, 2018.csv"))[,1:14]
+df_2019<-data.frame(read.csv("Arrests by Year, 2019.csv"))[,1:14]
+df_2020<-data.frame(read.csv("Arrests by Year 2020.csv"))[,1:14]
+df_2021<-data.frame(read.csv("2021 Adult Arrests.csv"))[,1:14]
+```
+Note that the colnames of df_2016 and df_2017 are not the same with others. But those indices are just about arrest location which is not what we are investigating. Therefore I just combined them by the same indices that we need. (A-N columns)
+##Merge Multiple CSV Files
+bind by rows
+
+```{r}
+
+
+DF<-rbind(df_2016,df_2017,df_2018,df_2019,df_2020,df_2021)
+colnames(DF)
+xkablesummary(DF)
+```
+
+
+
+## Including Plots
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
